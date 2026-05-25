@@ -165,7 +165,7 @@ const PROFILE_DATA = {
   github: 'github.com/Davidcode-ai',
 };
 
-const CMD_TEXT = 'curl -X GET https://davidcode-ai.github.io/api/profile';
+const CMD_TEXT = 'curl -X GET https://davidcode-ai.github.io/portfolio-2026/api/profile';
 
 function typeText(element, text, speed, callback) {
   let i = 0;
