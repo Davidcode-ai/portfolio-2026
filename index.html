@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>David Muñoz — Backend Developer</title>
+  <meta name="description" content="David Muñoz Valdés — Backend Developer Junior especializado en Python, FastAPI, automatización y bases de datos." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg:      '#0a0a0a',
+            surface: '#111111',
+            card:    '#161616',
+            border:  '#222222',
+            accent:  '#00ff88',
+            accentDim: '#00cc6a',
+            muted:   '#6b7280',
+            subtle:  '#3f3f46',
+            textPrimary: '#e4e4e7',
+            textSecondary: '#a1a1aa',
+          },
+          fontFamily: {
+            mono: ['JetBrains Mono', 'monospace'],
+            sans: ['Inter', 'sans-serif'],
+          },
+          boxShadow: {
+            glow:   '0 0 20px rgba(0, 255, 136, 0.4)',
+            glowLg: '0 0 40px rgba(0, 255, 136, 0.25)',
+            card:   '0 1px 3px rgba(0,0,0,0.5)',
+          },
+          animation: {
+            blink:    'blink 1s step-end infinite',
+            fadeInUp: 'fadeInUp 0.6s ease forwards',
+            glow:     'glow 2s ease-in-out infinite alternate',
+            shimmer:  'shimmer 1.5s linear infinite',
+            pulse2:   'pulse2 2s cubic-bezier(0.4,0,0.6,1) infinite',
+          },
+          keyframes: {
+            blink:    { '0%,100%': { opacity: '1' }, '50%': { opacity: '0' } },
+            fadeInUp: { from: { opacity: '0', transform: 'translateY(20px)' }, to: { opacity: '1', transform: 'translateY(0)' } },
+            glow:     { from: { boxShadow: '0 0 10px rgba(0,255,136,0.2)' }, to: { boxShadow: '0 0 30px rgba(0,255,136,0.6)' } },
+            shimmer:  { '0%': { backgroundPosition: '-200% 0' }, '100%': { backgroundPosition: '200% 0' } },
+            pulse2:   { '0%,100%': { opacity: '1' }, '50%': { opacity: '0.4' } },
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="bg-bg text-textPrimary font-sans antialiased overflow-x-hidden">
+
+  <!-- ─── NAV ───────────────────────────────────────────────────────────── -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 border-b border-border/0 transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+      <span class="font-mono text-accent text-sm font-bold tracking-wider">dm<span class="text-textSecondary">@dev</span><span class="animate-blink text-accent">_</span></span>
+      <div class="hidden md:flex items-center gap-8 font-mono text-xs text-textSecondary">
+        <a href="#hero"         class="nav-link hover:text-accent transition-colors">/home</a>
+        <a href="#api-console"  class="nav-link hover:text-accent transition-colors">/projects</a>
+        <a href="#architecture" class="nav-link hover:text-accent transition-colors">/architecture</a>
+        <a href="#about"        class="nav-link hover:text-accent transition-colors">/about</a>
+        <a href="#footer"       class="nav-link hover:text-accent transition-colors">/contact</a>
+      </div>
+      <button id="menu-btn" class="md:hidden text-textSecondary hover:text-accent transition-colors p-1">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-surface border-t border-border px-6 py-4 flex flex-col gap-4 font-mono text-sm text-textSecondary">
+      <a href="#hero"         class="hover:text-accent transition-colors">/home</a>
+      <a href="#api-console"  class="hover:text-accent transition-colors">/projects</a>
+      <a href="#architecture" class="hover:text-accent transition-colors">/architecture</a>
+      <a href="#about"        class="hover:text-accent transition-colors">/about</a>
+      <a href="#footer"       class="hover:text-accent transition-colors">/contact</a>
+    </div>
+  </nav>
+
+  <!-- ─── HERO — TERMINAL ───────────────────────────────────────────────── -->
+  <section id="hero" class="relative min-h-screen flex flex-col items-center justify-center px-6 pt-20 pb-16">
+    <div class="w-full max-w-3xl">
+
+      <!-- Label -->
+      <p class="font-mono text-xs text-muted mb-4 text-center tracking-widest uppercase">Backend Developer — Spain</p>
+
+      <!-- Terminal window -->
+      <div class="terminal-window rounded-xl overflow-hidden border border-border shadow-card">
+        <!-- Title bar -->
+        <div class="terminal-titlebar flex items-center gap-2 px-4 py-3 bg-[#1c1c1e] border-b border-border">
+          <span class="w-3 h-3 rounded-full bg-[#ff5f57]"></span>
+          <span class="w-3 h-3 rounded-full bg-[#febc2e]"></span>
+          <span class="w-3 h-3 rounded-full bg-[#28c840]"></span>
+          <span class="flex-1 text-center font-mono text-xs text-muted">bash — david@macbook-pro</span>
+        </div>
+
+        <!-- Terminal body -->
+        <div class="terminal-body bg-surface px-6 py-5 font-mono text-sm leading-relaxed min-h-[320px]">
+          <!-- Prompt line -->
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-accent font-bold">david@macbook-pro</span>
+            <span class="text-muted">~</span>
+            <span class="text-textSecondary">$</span>
+            <span id="typing-command" class="text-textPrimary"></span><span id="cursor-cmd" class="animate-blink text-accent font-bold">▋</span>
+          </div>
+
+          <!-- JSON response (hidden until typing finishes) -->
+          <div id="terminal-response" class="hidden mt-3">
+            <div class="text-muted text-xs mb-2"># HTTP/2 200  content-type: application/json</div>
+            <pre id="json-output" class="json-block text-sm leading-6"></pre>
+          </div>
+
+          <!-- Second prompt (shown after response) -->
+          <div id="second-prompt" class="hidden mt-3 flex items-center gap-2">
+            <span class="text-accent font-bold">david@macbook-pro</span>
+            <span class="text-muted">~</span>
+            <span class="text-textSecondary">$</span>
+            <span class="animate-blink text-accent font-bold">▋</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="#api-console" class="btn-primary font-mono text-sm px-6 py-3 rounded-lg bg-accent text-bg font-bold hover:bg-accentDim transition-all duration-200 hover:shadow-glow">
+          explore /projects →
+        </a>
+        <a href="#about" class="font-mono text-sm px-6 py-3 rounded-lg border border-border text-textSecondary hover:border-accent hover:text-accent transition-all duration-200">
+          about me
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-muted animate-pulse2">
+      <span class="font-mono text-xs">scroll</span>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- ─── INTERACTIVE API CONSOLE ───────────────────────────────────────── -->
+  <section id="api-console" class="py-24 px-6 reveal">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- Section header -->
+      <div class="mb-12">
+        <p class="font-mono text-accent text-xs tracking-widest uppercase mb-2">// 01 — Projects</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-textPrimary">Interactive API Console</h2>
+        <p class="text-textSecondary mt-3 max-w-xl">Click an endpoint to inspect the JSON response. Each route maps to a real project in my portfolio.</p>
+      </div>
+
+      <!-- Console layout -->
+      <div class="console-card rounded-xl border border-border overflow-hidden bg-card shadow-card">
+
+        <!-- Console top bar -->
+        <div class="console-topbar flex items-center justify-between px-5 py-3 bg-surface border-b border-border">
+          <div class="flex items-center gap-3">
+            <div class="flex gap-1.5">
+              <span class="w-3 h-3 rounded-full bg-[#ff5f57]"></span>
+              <span class="w-3 h-3 rounded-full bg-[#febc2e]"></span>
+              <span class="w-3 h-3 rounded-full bg-[#28c840]"></span>
+            </div>
+            <span class="font-mono text-xs text-muted hidden sm:block">davidcode-ai.github.io — API Explorer</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div id="status-badge" class="hidden badge-base badge-success">
+              <span class="badge-dot"></span>
+              <span id="status-text">200 OK</span>
+            </div>
+            <div class="font-mono text-xs text-muted">v1.0.0</div>
+          </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row min-h-[420px]">
+
+          <!-- Left: endpoint list -->
+          <div class="md:w-72 border-b md:border-b-0 md:border-r border-border bg-surface/50 p-4 flex flex-col gap-2">
+            <p class="font-mono text-xs text-muted uppercase tracking-widest mb-3 px-2">Endpoints</p>
+
+            <button class="endpoint-btn active-endpoint" data-endpoint="solbabackups">
+              <span class="method get">GET</span>
+              <span class="path">/projects/solbabackups</span>
+            </button>
+
+            <button class="endpoint-btn" data-endpoint="skills">
+              <span class="method get">GET</span>
+              <span class="path">/skills</span>
+            </button>
+
+            <button class="endpoint-btn" data-endpoint="contact">
+              <span class="method post">POST</span>
+              <span class="path">/contact</span>
+            </button>
+
+            <!-- Latency display -->
+            <div class="mt-auto pt-4 border-t border-border">
+              <div class="font-mono text-xs text-muted flex justify-between px-2">
+                <span>Latency</span>
+                <span id="latency-display" class="text-accent">— ms</span>
+              </div>
+              <div class="mt-2 h-1 bg-border rounded-full overflow-hidden">
+                <div id="latency-bar" class="h-full bg-accent rounded-full transition-all duration-500" style="width:0%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: response panel -->
+          <div class="flex-1 flex flex-col bg-bg">
+            <!-- Response meta bar -->
+            <div class="flex items-center gap-4 px-5 py-3 border-b border-border bg-surface/30">
+              <span class="font-mono text-xs text-muted">Response Body</span>
+              <span class="font-mono text-xs text-subtle">application/json</span>
+            </div>
+
+            <!-- Response content -->
+            <div class="relative flex-1 p-5 overflow-auto">
+              <div id="api-loading" class="hidden absolute inset-0 flex items-center justify-center bg-bg/80">
+                <div class="flex flex-col items-center gap-3">
+                  <div class="w-8 h-8 border-2 border-border border-t-accent rounded-full animate-spin"></div>
+                  <span class="font-mono text-xs text-muted">Fetching...</span>
+                </div>
+              </div>
+              <pre id="api-response" class="font-mono text-sm leading-6 text-textPrimary whitespace-pre-wrap"></pre>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SYSTEM ARCHITECTURE ───────────────────────────────────────────── -->
+  <section id="architecture" class="py-24 px-6 reveal">
+    <div class="max-w-6xl mx-auto">
+
+      <div class="mb-12">
+        <p class="font-mono text-accent text-xs tracking-widest uppercase mb-2">// 02 — Architecture</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-textPrimary">System Architecture</h2>
+        <p class="text-textSecondary mt-3 max-w-xl">SolbaBackups data flow — from client trigger to cloud storage. Hover over each node to inspect.</p>
+      </div>
+
+      <!-- Architecture diagram -->
+      <div class="arch-diagram-wrapper rounded-xl border border-border bg-card p-8 md:p-14 overflow-x-auto">
+        <div class="arch-flow flex flex-col md:flex-row items-center justify-center gap-0 md:gap-0">
+
+          <!-- Node: Client -->
+          <div class="arch-node group" data-label="Initiates HTTP request via cron or manual trigger">
+            <div class="arch-node-inner">
+              <div class="arch-icon">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              </div>
+              <span class="arch-label">Client</span>
+              <span class="arch-sublabel">HTTP Request</span>
+            </div>
+            <div class="arch-tooltip group-hover:opacity-100">Initiates HTTP request<br/>via cron or manual trigger</div>
+          </div>
+
+          <!-- Arrow -->
+          <div class="arch-arrow arch-arrow-h">
+            <svg class="w-8 h-4 hidden md:block" viewBox="0 0 32 16" fill="none"><path d="M0 8 H28 M22 2 L30 8 L22 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg class="w-4 h-8 md:hidden" viewBox="0 0 16 32" fill="none"><path d="M8 0 V28 M2 22 L8 30 L14 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+
+          <!-- Node: FastAPI -->
+          <div class="arch-node group" data-label="Processes backup logic, schedules tasks, exposes REST endpoints">
+            <div class="arch-node-inner arch-node-inner--accent">
+              <div class="arch-icon">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/></svg>
+              </div>
+              <span class="arch-label">FastAPI</span>
+              <span class="arch-sublabel">Python Server</span>
+            </div>
+            <div class="arch-tooltip group-hover:opacity-100">Processes backup logic<br/>Schedules tasks via NSSM<br/>Exposes REST endpoints</div>
+          </div>
+
+          <!-- Arrow -->
+          <div class="arch-arrow arch-arrow-h">
+            <svg class="w-8 h-4 hidden md:block" viewBox="0 0 32 16" fill="none"><path d="M0 8 H28 M22 2 L30 8 L22 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg class="w-4 h-8 md:hidden" viewBox="0 0 16 32" fill="none"><path d="M8 0 V28 M2 22 L8 30 L14 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+
+          <!-- Node: PostgreSQL -->
+          <div class="arch-node group" data-label="Stores backup metadata, logs and job history">
+            <div class="arch-node-inner">
+              <div class="arch-icon">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>
+              </div>
+              <span class="arch-label">PostgreSQL</span>
+              <span class="arch-sublabel">Database</span>
+            </div>
+            <div class="arch-tooltip group-hover:opacity-100">Stores backup metadata<br/>Logs & job history<br/>Queries via SQLAlchemy</div>
+          </div>
+
+          <!-- Arrow -->
+          <div class="arch-arrow arch-arrow-h">
+            <svg class="w-8 h-4 hidden md:block" viewBox="0 0 32 16" fill="none"><path d="M0 8 H28 M22 2 L30 8 L22 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg class="w-4 h-8 md:hidden" viewBox="0 0 16 32" fill="none"><path d="M8 0 V28 M2 22 L8 30 L14 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+
+          <!-- Node: Google Drive -->
+          <div class="arch-node group" data-label="Stores encrypted backup files via Google Drive API v3">
+            <div class="arch-node-inner">
+              <div class="arch-icon">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+              </div>
+              <span class="arch-label">Google Drive</span>
+              <span class="arch-sublabel">Cloud Storage</span>
+            </div>
+            <div class="arch-tooltip group-hover:opacity-100">Stores encrypted backup files<br/>via Google Drive API v3<br/>OAuth2 service account</div>
+          </div>
+
+        </div>
+
+        <!-- Tech tags -->
+        <div class="flex flex-wrap justify-center gap-2 mt-10">
+          <span class="tech-tag">Python 3.11</span>
+          <span class="tech-tag">FastAPI</span>
+          <span class="tech-tag">SQLAlchemy</span>
+          <span class="tech-tag">PostgreSQL</span>
+          <span class="tech-tag">Google Drive API v3</span>
+          <span class="tech-tag">NSSM</span>
+          <span class="tech-tag">OAuth2</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ABOUT ME ──────────────────────────────────────────────────────── -->
+  <section id="about" class="py-24 px-6 reveal">
+    <div class="max-w-6xl mx-auto">
+
+      <div class="mb-12">
+        <p class="font-mono text-accent text-xs tracking-widest uppercase mb-2">// 03 — About</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-textPrimary">Human Behind the Code</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-10 items-start">
+
+        <!-- Bio -->
+        <div class="space-y-5">
+          <p class="text-textSecondary leading-relaxed text-base">
+            I'm <strong class="text-textPrimary">David Muñoz</strong>, a Backend Developer Junior based in Spain. I hold a Grado Medio in SMR and am currently finishing the 2nd year of my Grado Superior in DAW. I'm passionate about building robust, scalable backend systems — from REST APIs to full automation pipelines.
+          </p>
+          <p class="text-textSecondary leading-relaxed text-base">
+            My current focus is <strong class="text-textPrimary">Python & FastAPI</strong> for server-side development, <strong class="text-textPrimary">Make.com</strong> for no-code/low-code automation, and <strong class="text-textPrimary">Prompt Engineering</strong> for integrating AI into real workflows.
+          </p>
+          <p class="text-textSecondary leading-relaxed text-base">
+            I believe great backend code should be invisible — fast, reliable, and boring in the best possible way.
+          </p>
+
+          <!-- Stack pills -->
+          <div class="pt-2 flex flex-wrap gap-2">
+            <span class="stack-pill">Python</span>
+            <span class="stack-pill">FastAPI</span>
+            <span class="stack-pill">PostgreSQL</span>
+            <span class="stack-pill">Make.com</span>
+            <span class="stack-pill">Git</span>
+            <span class="stack-pill">Prompt Engineering</span>
+          </div>
+        </div>
+
+        <!-- Hobbies grid -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="hobby-card">
+            <div class="hobby-icon">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <span class="hobby-title">Calisthenics</span>
+            <span class="hobby-sub">Bodyweight training &amp; movement</span>
+          </div>
+
+          <div class="hobby-card">
+            <div class="hobby-icon">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+            </div>
+            <span class="hobby-title">Kawasaki H2R</span>
+            <span class="hobby-sub">Motorcycles &amp; engineering</span>
+          </div>
+
+          <div class="hobby-card">
+            <div class="hobby-icon">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+            </div>
+            <span class="hobby-title">AI &amp; LLMs</span>
+            <span class="hobby-sub">Prompt engineering &amp; integration</span>
+          </div>
+
+          <div class="hobby-card">
+            <div class="hobby-icon">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+            </div>
+            <span class="hobby-title">Clean Code</span>
+            <span class="hobby-sub">Architecture &amp; best practices</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Currently section -->
+      <div class="mt-12 p-6 rounded-xl border border-border bg-card flex flex-col sm:flex-row gap-6 items-start sm:items-center">
+        <div class="flex items-center gap-3">
+          <span class="relative flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
+          </span>
+          <span class="font-mono text-xs text-accent tracking-widest uppercase">Currently</span>
+        </div>
+        <div class="grid sm:grid-cols-3 gap-4 flex-1">
+          <div class="font-mono text-xs">
+            <div class="text-muted mb-1">Learning</div>
+            <div class="text-textPrimary">GS DAW — 2º año · 2026</div>
+          </div>
+          <div class="font-mono text-xs">
+            <div class="text-muted mb-1">Building</div>
+            <div class="text-textPrimary">SolbaBackups v2.0</div>
+          </div>
+          <div class="font-mono text-xs">
+            <div class="text-muted mb-1">Exploring</div>
+            <div class="text-textPrimary">LangChain &amp; RAG pipelines</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─────────────────────────────────────────────────────────── -->
+  <footer id="footer" class="py-16 px-6 border-t border-border">
+    <div class="max-w-6xl mx-auto flex flex-col items-center gap-8">
+
+      <!-- Links -->
+      <div class="flex items-center gap-6">
+        <a href="https://github.com/Davidcode-ai" target="_blank" rel="noopener" class="footer-link" aria-label="GitHub">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          <span>GitHub</span>
+        </a>
+        <span class="text-border">|</span>
+        <a href="https://www.linkedin.com/in/david-muñoz-valdés-8b26932b8/" target="_blank" rel="noopener" class="footer-link" aria-label="LinkedIn">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <span>LinkedIn</span>
+        </a>
+        <span class="text-border">|</span>
+        <a href="mailto:davidmv030306@gmail.com" class="footer-link" aria-label="Email">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <span>Email</span>
+        </a>
+      </div>
+
+      <!-- Copyright -->
+      <p class="font-mono text-xs text-muted text-center">
+        <span class="text-accent">©</span> 2026 David Muñoz Valdés — Built with FastAPI-inspired architecture &amp; too much caffeine
+      </p>
+      <p class="font-mono text-xs text-subtle">david@macbook-pro:~$ <span class="animate-blink text-accent">▋</span></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
